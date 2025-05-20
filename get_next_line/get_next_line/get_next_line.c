@@ -6,12 +6,24 @@
 /*   By: gpirozzi <giovannipirozzi12345@gmail.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 15:21:43 by gpirozzi          #+#    #+#             */
-/*   Updated: 2025/01/08 14:02:47 by gpirozzi         ###   ########.fr       */
+/*   Updated: 2025/05/20 15:32:50 by gpirozzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+/**
+ * @brief Reads from a file descriptor until a newline or EOF is found,
+ *        concatenating the read content into a dynamically allocated string.
+ *
+ * Reads BUFFER_SIZE bytes at a time into buffer, appending the content to
+ * *result. Stops reading when a newline character is found or EOF is reached.
+ *
+ * @param fd The file descriptor to read from.
+ * @param result Pointer to a string where the read data is accumulated.
+ * @param buffer Temporary buffer for reading data.
+ * @return char* The accumulated string including the newline if found, or NULL on error.
+ */
 static char	*ft_putline(int fd, char **result, char *buffer)
 {
 	ssize_t	bt_read;
@@ -41,6 +53,16 @@ static char	*ft_putline(int fd, char **result, char *buffer)
 	return (*result);
 }
 
+/**
+ * @brief Extracts and returns the remaining part of the line after the first newline.
+ *
+ * Finds the newline character in the line, terminates the original string after it,
+ * and returns a newly allocated string containing the rest of the content after
+ * the newline. Returns NULL if there is no remaining content.
+ *
+ * @param line The line containing a newline character.
+ * @return char* Newly allocated string of the content after the newline, or NULL if none.
+ */
 static char	*ft_getrest(char *line)
 {
 	ssize_t	i;
@@ -62,6 +84,15 @@ static char	*ft_getrest(char *line)
 	return (rest);
 }
 
+/**
+ * @brief Reads the next line from a file descriptor.
+ *
+ * Uses a static variable to store leftover data between calls. Reads data until
+ * a newline or EOF is found, then returns the line including the newline.
+ *
+ * @param fd The file descriptor to read from.
+ * @return char* The next line read from fd, or NULL on error or EOF.
+ */
 char	*get_next_line(int fd)
 {
 	static char	*rest;
