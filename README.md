@@ -59,9 +59,7 @@ Standard C libraries.
 
 2. Compilation
 To use get_next_line in your project, you must compile your source files with the library files. You must also define the buffer size using the -D flag.
-```
 
-```bash
 # Example with a main.c file and a buffer size of 42
 cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 main.c get_next_line.c get_next_line_utils.c
 ⚠️ Note: If BUFFER_SIZE is not defined, the behavior might be undefined or default to a fixed value depending on your header file.
