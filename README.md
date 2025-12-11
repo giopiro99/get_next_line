@@ -98,6 +98,7 @@ gcc -D BUFFER_SIZE=42 main.c get_next_line_bonus.c get_next_line_utils_bonus.c
 ```
 
 🧠 What I Learned
+
 Static Variables: Understanding how variables effectively "live" in the data segment of the memory, persisting their value across function calls.
 
 File Descriptors: Deep dive into how the OS identifies open files.
