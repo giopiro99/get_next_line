@@ -31,6 +31,7 @@ Dynamic Memory: Allocates exactly enough memory for the line returned, preventin
 
 Multiple File Descriptors (Bonus): Can read from multiple FDs essentially simultaneously without losing the reading thread of any of them.
 ```
+
 ### 🛠️ Implementation Logic
 ```text
 Read: The function reads BUFFER_SIZE bytes from the file descriptor into a temporary buffer.
