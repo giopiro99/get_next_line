@@ -20,8 +20,9 @@ Read line: Correct behavior.
 
 NULL: Nothing else to read (EOF) or an error occurred.
 ```
+
+### ✨ Features
 ```text
-✨ Features
 Buffering: Reads data in chunks defined by BUFFER_SIZE to optimize system calls.
 
 Persistence: Uses static variables to remember the state of the file descriptor between function calls (saving the "leftover" characters after a newline).
@@ -29,8 +30,9 @@ Persistence: Uses static variables to remember the state of the file descriptor 
 Dynamic Memory: Allocates exactly enough memory for the line returned, preventing buffer overflows.
 
 Multiple File Descriptors (Bonus): Can read from multiple FDs essentially simultaneously without losing the reading thread of any of them.
-
-🛠️ Implementation Logic
+```
+### 🛠️ Implementation Logic
+```text
 Read: The function reads BUFFER_SIZE bytes from the file descriptor into a temporary buffer.
 
 Stash: This buffer is joined to a static "stash" string.
@@ -48,8 +50,8 @@ Update the static stash to contain only the remaining characters after the \n.
 Return the line.
 ```
 
+### 🚀 Installation & Usage
 ```text
-🚀 Installation & Usage
 1. Requirements
 GCC or Clang compiler.
 Standard C libraries.
@@ -83,8 +85,8 @@ int main(void)
     return (0);
 }
 ```
+### ⭐️ Bonus Part
 ```text
-⭐️ Bonus Part
 The bonus implementation allows managing multiple file descriptors at the same time.
 
 You can call get_next_line on fd 3, then on fd 4, then back on fd 3 without losing the position or the buffer content of either file.
